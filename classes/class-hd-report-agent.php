@@ -62,7 +62,7 @@ EOD;
                 'system' => [
                     [
                         "type" => "text",
-                        "text" => $$this->basePrompt(),
+                        "text" => $this->basePrompt(),
                         "cache_control" => ["type" => "ephemeral"]
                     ],
                     [
@@ -105,8 +105,19 @@ EOD;
 
         $body = wp_remote_retrieve_body($response);
         $data = json_decode($body, true);
+        $http_code = wp_remote_retrieve_response_code($response);
+
+        // Check for API error responses
+        if ($http_code >= 400 || isset($data['error'])) {
+            $error_message = isset($data['error']['message'])
+                ? $data['error']['message']
+                : (isset($data['error']) ? json_encode($data['error']) : "HTTP $http_code error");
+            error_log("Anthropic API error: $error_message");
+            return new WP_Error('api_error', $error_message);
+        }
 
         if (empty($data['content'][0]['text'])) {
+            error_log("Anthropic API returned empty content. Response: " . substr($body, 0, 500));
             return new WP_Error('api_error', 'No content returned from Anthropic API');
         }
         return trim($data['content'][0]['text']);
