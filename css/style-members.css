@@ -1,0 +1,79 @@
+/* Grid layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Shared card styles */
+.card {
+  position: relative;
+  min-height: 250px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-content {
+  text-align: center;
+}
+
+.card-content h1 {
+  font-size: 2rem  ;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #b99831;
+  margin: 0;
+}
+
+.card-content h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0.5rem 0 0;
+}
+
+/* Backgrounds per card */
+.card-intro {
+  background-image: url('https://zentha.com/wp-content/uploads/2024/10/Layer-11.png');
+}
+
+.card-report {
+  background-image: url('https://zentha.com/wp-content/uploads/2025/03/HDReportApp.png');
+}
+
+.card-cert {
+  background-image: url('https://zentha.com/wp-content/uploads/2024/10/Rounded-Rectangle-2-copy.png');
+}
+
+.card-money {
+  background-image: url('https://zentha.com/wp-content/uploads/2024/10/Rounded-Rectangle-2.png');
+}

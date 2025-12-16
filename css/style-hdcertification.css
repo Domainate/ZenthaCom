@@ -1,0 +1,14 @@
+.testimonial-wrapper {
+  background-image: url('https://zentha.com/wp-content/uploads/2024/11/guy-banner-img.png');
+  background-size: cover;
+  background-position: right;
+  padding: 60px 0;
+  color: #333;
+}
+
+.testimonial-wrapper .testimonial-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

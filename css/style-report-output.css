@@ -1,0 +1,51 @@
+.btn-print-report:hover svg,
+.btn-download-report:hover svg {
+  cursor: pointer;
+  fill: #8c732c !important;
+}
+
+.report-content *,
+.report-content .uagb-container-inner-blocks-wrap {
+  background: #fff !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.hd-report-output {
+  padding: 2rem;
+}
+
+.hd-report-output h2 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.hd-report-output h2:first-of-type {
+  text-align: center;
+  font-size: 2.9rem;
+  margin-bottom: 1rem;
+}
+
+.hd-report-output h3 {
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+@media print {
+  header {
+    display: none !important;
+  }
+  .hide-on-print {
+    display: none !important;
+  }
+}
+
+@media screen {
+  .hide-on-screen {
+    display: none !important;
+  }
+}

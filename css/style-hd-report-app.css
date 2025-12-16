@@ -1,0 +1,10 @@
+form#hd_report_form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#hd_profile_dropdown_report {
+  margin: 0 auto !important;
+}

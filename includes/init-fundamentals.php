@@ -1,0 +1,201 @@
+<?php
+
+
+if (!function_exists('fundamentalList')) {
+    function fundamentalList(): array
+    {
+        return [
+            [
+                'week_number' => '1',
+                'title' => 'Introduction',
+                'video_url' => 'https://player.vimeo.com/video/1037544745?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-1-Introduction-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-1-Introduction-Transcript.pdf',
+            ],
+            [
+                'week_number' => '1',
+                'title' => 'Types',
+                'video_url' => 'https://player.vimeo.com/video/1037546032?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-1-Types-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-1-Types-Transcript.pdf',
+            ],
+            [
+                'week_number' => '1',
+                'title' => 'Strategy',
+                'video_url' => 'https://player.vimeo.com/video/1037544970?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-1-Strategy-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-1-Strategy-Transcript.pdf',
+            ],
+            [
+                'week_number' => '1',
+                'title' => 'Authority',
+                'video_url' => 'https://player.vimeo.com/video/1037543940?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-1-Authority-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-1-Authority-Transcript.pdf',
+            ],
+            [
+                'week_number' => '2',
+                'title' => 'Introduction to Centers',
+                'video_url' => 'https://player.vimeo.com/video/1039398849?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-2-Introduction-to-Centers-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-2-Introduction-to-Centers-Transcript.pdf',
+            ],
+            [
+                'week_number' => '2',
+                'title' => 'Undefined Centers',
+                'video_url' => 'https://player.vimeo.com/video/1039399001?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-2-Undefined-Centers-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-2-Undefined-Centers-Transcript.pdf',
+            ],
+            [
+                'week_number' => '2',
+                'title' => 'Defined Centers',
+                'video_url' => 'https://player.vimeo.com/video/1039398544?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-2-Defined-Centers-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-2-Defined-Centers-Transcript.pdf',
+            ],
+            [
+                'week_number' => '3',
+                'title' => 'Advanced Centers and 4 Primary Variables',
+                'video_url' => 'https://player.vimeo.com/video/1042041166?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2024/10/mp3.png',
+                'transcript_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-3-Advanced-Centers-Transcript.pdf',
+            ],
+            [
+                'week_number' => '3',
+                'title' => 'Diving Deep into Magnetic Monopoles',
+                'video_url' => 'https://player.vimeo.com/video/1042041257?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2024/10/mp3.png',
+                'transcript_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-3-Magnetic-Monopoles-Transcript.pdf',
+            ],
+            [
+                'week_number' => '3',
+                'title' => 'Aligning Your Type & Magnetic Monopole',
+                'video_url' => 'https://player.vimeo.com/video/1042041055?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2024/10/mp3.png',
+                'transcript_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-3-Aligning-Your-Type-Transcript.pdf',
+            ],
+            [
+                'week_number' => '3',
+                'title' => 'The 4 Primary Variables',
+                'video_url' => 'https://player.vimeo.com/video/1042041335?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2024/10/mp3.png',
+                'transcript_url' => '/wp-content/uploads/2024/12/HD-Certification-Fundamentals-Week-3-4-Primary-Variables-Transcript.pdf',
+            ],
+            [
+                'week_number' => '4',
+                'title' => 'Gates Basics',
+                'video_url' => 'https://player.vimeo.com/video/1044881868?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-4-Gates-Basics-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-4-Gates-Basics-Transcript.pdf',
+            ],
+            [
+                'week_number' => '4',
+                'title' => 'Design vs. Personality Gates',
+                'video_url' => 'https://player.vimeo.com/video/1044881491?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-4-Design-vs-Personality-Gates-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-4-Design-vs-Personality-Gates-Transcript.pdf',
+            ],
+            [
+                'week_number' => '4',
+                'title' => 'Understanding Gates & Planetary Symbols',
+                'video_url' => 'https://player.vimeo.com/video/1044882076?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-4-Understanding-Gates-and-Planetary-Symbols-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-4-Understanding-Gates-and-Planetary-Symbols-Transcript.pdf',
+            ],
+            [
+                'week_number' => '4',
+                'title' => 'Decoding Gate Symbols and Lines',
+                'video_url' => 'https://player.vimeo.com/video/1044881034?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-4-Decoding-Gate-Symbols-and-Lines-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-4-Decoding-Gate-Symbols-and-Lines-Transcript.pdf',
+            ],
+            [
+                'week_number' => '4',
+                'title' => 'Gates 1-21',
+                'video_url' => 'https://player.vimeo.com/video/1047266745?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-4-Gates-1-21-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-4-Gates-1-21-Transcript.pdf',
+            ],
+            [
+                'week_number' => '4',
+                'title' => 'Gates 22-43',
+                'video_url' => 'https://player.vimeo.com/video/1047267398?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-4-Gates-22-43-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-4-Gates-22-43-Transcript.pdf',
+            ],
+            [
+                'week_number' => '4',
+                'title' => 'Gates 44-64',
+                'video_url' => 'https://player.vimeo.com/video/1047267869?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-4-Gates-44-64-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-4-Gates-44-64-Transcript.pdf',
+            ],
+            [
+                'week_number' => '4',
+                'title' => 'Repeating Gates',
+                'video_url' => 'https://player.vimeo.com/video/1044881034?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-4-Repeating-Gates-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-4-Repeating-Gates-Transcript.pdf',
+            ],
+            [
+                'week_number' => '5',
+                'title' => 'Advanced Energetics & Dynamics',
+                'video_url' => 'https://player.vimeo.com/video/1049904314?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-5-Advanced-Energetics-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-5-Advanced-Energetics-Transcript.pdf',
+            ],
+            [
+                'week_number' => '5',
+                'title' => 'Definition',
+                'video_url' => 'https://player.vimeo.com/video/1049902779?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-5-Definition-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-5-Definition-Transcript.pdf',
+            ],
+            [
+                'week_number' => '5',
+                'title' => 'Profiles',
+                'video_url' => 'https://player.vimeo.com/video/1049904769?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-5-Profiles-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-5-Profiles-Transcript.pdf',
+            ],
+            [
+                'week_number' => '5',
+                'title' => 'Incarnation Crosses',
+                'video_url' => 'https://player.vimeo.com/video/1049903594?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-5-Incarnation-Crosses-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2025/01/HD-Certification-Fundamentals-Week-5-Incarnation-Crosses-Transcript.pdf',
+            ],
+            [
+                'week_number' => '5',
+                'title' => 'Understanding Signature and Not-Self Themes',
+                'video_url' => 'https://player.vimeo.com/video/1052486462?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2025/02/HD-Certification-Fundamentals-Week-5-Signature-Not-Self-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2025/02/HD-Certification-Fundamentals-Week-5-Signature-Not-Self-Transcript.pdf',
+            ],
+            [
+                'week_number' => '5',
+                'title' => 'Understanding What Channels Are',
+                'video_url' => 'https://player.vimeo.com/video/1052486588?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2025/02/HD-Certification-Fundamentals-Week-5-Understanding-Channels-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2025/02/HD-Certification-Fundamentals-Week-5-Understanding-Channels-Transcript.pdf',
+            ],
+            [
+                'week_number' => '5',
+                'title' => '36 Channels',
+                'video_url' => 'https://player.vimeo.com/video/1052486035?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2025/02/HD-Certification-Fundamentals-Week-5-36-Channels-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2025/02/HD-Certification-Fundamentals-Week-5-36-Channels-Transcript.pdf',
+            ],
+            [
+                'week_number' => '5',
+                'title' => 'Advanced Gates',
+                'video_url' => 'https://player.vimeo.com/video/1052485892?badge=0&autopause=0&player_id=0&app_id=58479',
+                'audio_url' => '/wp-content/uploads/2025/02/HD-Certification-Fundamentals-Week-5-Advance-Gates-Audio.mp3',
+                'transcript_url' => '/wp-content/uploads/2025/02/HD-Certification-Fundamentals-Week-5-Advance-Gates-Transcript.pdf',
+            ],
+        
+        ];
+
+    }
+}
