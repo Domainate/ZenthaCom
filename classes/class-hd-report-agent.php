@@ -9,9 +9,8 @@ class HDReportAgent
     protected $chartData;
     protected $apiUrl = 'https://api.anthropic.com/v1/messages';
     protected $apiVersion = '2023-06-01';
-    protected $anthropicBeta = 'output-128k-2025-02-19';
-    protected $maxToken = 30000;
-    protected $model = 'claude-3-7-sonnet-20250219';
+    protected $maxToken = 16000;
+    protected $model = 'claude-sonnet-4-20250514';
 
     public function __construct($userPrompt, $reportPrompt, $chartData)
     {
@@ -86,9 +85,8 @@ EOD;
 
             'headers' => [
                 'Content-Type' => 'application/json',
-                'x-api-key' => $this->apiKey,             // Anthropic uses x-api-key instead of Authorization 
-                'anthropic-version' => $this->apiVersion, // Required API version header
-                'anthropic-beta' => $this->anthropicBeta, // Beta header for 128k tokens
+                'x-api-key' => $this->apiKey,
+                'anthropic-version' => $this->apiVersion,
             ],
             'timeout' => 300, // Increased timeout for longer responses
         ];
