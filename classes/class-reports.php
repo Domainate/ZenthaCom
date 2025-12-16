@@ -60,20 +60,41 @@ class ZenthaReports
         </form>';
     }
 
-    public static function buildViewReport($report, $isPending = false, $hasView = false, $hasDelete = false, $hasCreate = false, $profile_id = null, $report_id = null, $name = '', $hasVideo = false): string
+    public static function buildViewReport($report, $isPending = false, $hasView = false, $hasDelete = false, $hasCreate = false, $profile_id = null, $report_id = null, $name = '', $hasVideo = false, $actualReportData = null): string
     {
         // print_r($report);
         $hasActions = $hasView || $hasDelete || $hasCreate;
         $html = [];
-        $tz = get_option('timezone_string') ?? 'America/New_York';
-        $createdDate = date('m/d/Y g:ia', strtotime($report->post_date . ' ' . $tz));
-        $modifiedDate = date('m/d/Y g:ia', strtotime($report->post_modified . ' ' . $tz));
+
+        // Use actual report data for dates if available, otherwise fall back to report type template
+        $dateSource = $actualReportData ?? $report;
+        $postDate = is_array($dateSource) ? ($dateSource['post_date'] ?? '') : ($dateSource->post_date ?? '');
+        $postModified = is_array($dateSource) ? ($dateSource['post_modified'] ?? '') : ($dateSource->post_modified ?? '');
+
+        // Properly convert dates to Eastern timezone
+        $tz = new DateTimeZone(get_option('timezone_string') ?: 'America/New_York');
+        $serverTz = new DateTimeZone(wp_timezone_string());
+
+        $createdDate = '';
+        if (!empty($postDate)) {
+            $dt = new DateTime($postDate, $serverTz);
+            $dt->setTimezone($tz);
+            $createdDate = $dt->format('m/d/Y g:ia');
+        }
+
+        $requestedDate = '';
+        if (!empty($postDate)) {
+            $dt = new DateTime($postDate, $serverTz);
+            $dt->setTimezone($tz);
+            $requestedDate = $dt->format('m/d/Y g:ia');
+        }
+
         $videoView = $hasVideo && !is_null($report->_video_url) ? do_shortcode('[report_video_lightbox_button src="' . $report->_video_url . '"]') : '';
 
         $nameDisplay = !empty($name) ? ' (' . esc_attr($name) . ')' : '';
         $dateDisplay = $hasView ? '<small class="w-full text-left" style="font-size:0.8rem;font-style: italic; margin: 2px 0;">Created on: ' . esc_html($createdDate) . ' ET</small>'
             : ($isPending
-                ? '<small class="w-full text-left" style="font-size:0.8rem;font-style: italic; margin: 2px 0;">Requested on: ' . esc_html($modifiedDate) . ' ET (<b>in Progress</b>)</small>'
+                ? '<small class="w-full text-left" style="font-size:0.8rem;font-style: italic; margin: 2px 0;">Requested on: ' . esc_html($requestedDate) . ' ET (<b>in Progress</b>)</small>'
                 : '');
 
         $html[] = '<div class="each-report-wrapper p-2 flex w-full flex-row gap-2 justify-between items-start mb-4" style="margin-bottom: 0.5em; border:1px solid #ccc;">
@@ -112,7 +133,7 @@ class ZenthaReports
             $profile_id = !is_null($profile_id) ? $profile_id : $each['profile']->ID;
             $profile_name = $hasName ? $each['profile']->post_title : '';
             if ($report) {
-                $contents .= self::buildViewReport($report, false, true, true, false, $profile_id, $each['ID'], $profile_name, $hasVideo);
+                $contents .= self::buildViewReport($report, false, true, true, false, $profile_id, $each['ID'], $profile_name, $hasVideo, $each);
             }
         }
         return $contents;
@@ -125,7 +146,7 @@ class ZenthaReports
             $profile_id = !is_null($profile_id) ? $profile_id : $each['profile']->ID;
             $profile_name = $hasName ? $each['profile']->post_title : '';
             if ($report) {
-                $contents .= self::buildViewReport($report, true, false, true, false, $profile_id, $each['ID'], $profile_name, $hasVideo);
+                $contents .= self::buildViewReport($report, true, false, true, false, $profile_id, $each['ID'], $profile_name, $hasVideo, $each);
 
             }
         }
@@ -135,7 +156,7 @@ class ZenthaReports
     {
         $contents = "";
         foreach ($reportTypes as $each) {
-            $contents .= self::buildViewReport($each, false, false, false, true, $profile_id, null, $hasVideo);
+            $contents .= self::buildViewReport($each, false, false, false, true, $profile_id, null, '', $hasVideo);
         }
         return $contents;
     }
