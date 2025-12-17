@@ -110,11 +110,22 @@ EOD;
     update_post_meta($report_post_id, '_hd_report_prompt', $report_prompt);
     update_post_meta($report_post_id, '_hd_report_status', 'pending');
 
-    wp_schedule_single_event(
-        current_time('timestamp') + 10,
+    error_log("=== hd_create_report: Created report post ID $report_post_id ===");
+    error_log("Scheduling cron event 'hd_generate_report_event' for 10 seconds from now");
+
+    $scheduled_time = current_time('timestamp') + 10;
+    $schedule_result = wp_schedule_single_event(
+        $scheduled_time,
         'hd_generate_report_event',
         array($report_post_id)
     );
+
+    error_log("Scheduled time: " . date('Y-m-d H:i:s', $scheduled_time));
+    error_log("Schedule result: " . ($schedule_result ? 'SUCCESS' : 'FAILED (already scheduled or error)'));
+
+    // Verify the event was scheduled
+    $next_scheduled = wp_next_scheduled('hd_generate_report_event', array($report_post_id));
+    error_log("Next scheduled time for this event: " . ($next_scheduled ? date('Y-m-d H:i:s', $next_scheduled) : 'NOT FOUND'));
 
     $redirect_url = home_url('/members/reportapp/my-reports/');
     wp_redirect(add_query_arg('success', urlencode('Report generation has been successfully queued.'), $redirect_url));
