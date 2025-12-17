@@ -94,16 +94,33 @@ EOD;
 
     public function sendRequest(): string|WP_Error|null
     {
+        error_log("=== HDReportAgent::sendRequest() START ===");
+        error_log("Model: " . $this->model);
+        error_log("API URL: " . $this->apiUrl);
+        error_log("API Key defined: " . (defined('ANTROPHIC_KEY') ? 'YES' : 'NO'));
+        error_log("API Key length: " . strlen($this->apiKey));
+        error_log("API Key prefix: " . substr($this->apiKey, 0, 10) . "...");
+
         $args = $this->buildPayload();
+
+        error_log("Request headers: " . print_r($args['headers'], true));
+        error_log("Request body length: " . strlen($args['body']));
+
+        error_log("Making API request...");
         $response = wp_remote_post($this->apiUrl, $args);
 
         if (is_wp_error($response)) {
-            return $response; // Return WP_Error for handling
+            error_log("WP_Error on request: " . $response->get_error_message());
+            return $response;
         }
 
         $body = wp_remote_retrieve_body($response);
         $data = json_decode($body, true);
         $http_code = wp_remote_retrieve_response_code($response);
+
+        error_log("HTTP Response Code: " . $http_code);
+        error_log("Response body length: " . strlen($body));
+        error_log("Response body (first 1000 chars): " . substr($body, 0, 1000));
 
         // Check for API error responses
         if ($http_code >= 400 || isset($data['error'])) {
@@ -115,9 +132,11 @@ EOD;
         }
 
         if (empty($data['content'][0]['text'])) {
-            error_log("Anthropic API returned empty content. Response: " . substr($body, 0, 500));
+            error_log("Anthropic API returned empty content. Full response: " . $body);
             return new WP_Error('api_error', 'No content returned from Anthropic API');
         }
+
+        error_log("=== HDReportAgent::sendRequest() SUCCESS - Content length: " . strlen($data['content'][0]['text']) . " ===");
         return trim($data['content'][0]['text']);
     }
 }

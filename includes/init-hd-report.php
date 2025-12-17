@@ -121,8 +121,9 @@ add_action('hd_check_stuck_pending_reports', function () {
 /**Display report options (a placeholder link).*/
 function do_async_report_generation($report_id)
 {
-
-    error_log("do_async_report_generation fired for $report_id");
+    error_log("=======================================================");
+    error_log("=== do_async_report_generation START for report $report_id ===");
+    error_log("=======================================================");
 
     $retry_count = (int) get_post_meta($report_id, '_hd_retry_count', true);
     if ($retry_count >= 1) {
