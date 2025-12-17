@@ -1,4 +1,7 @@
 <?php
+// Ensure HDReportAgent class is loaded for cron execution
+require_once get_stylesheet_directory() . '/classes/class-hd-report-agent.php';
+
 add_action('init', function () {
     if (!wp_next_scheduled('hd_check_stuck_pending_reports')) {
         wp_schedule_event(time(), 'five_minutes', 'hd_check_stuck_pending_reports');
