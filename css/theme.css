@@ -272,13 +272,13 @@
   position: absolute;
   left: 25%;
   top: 40px;
-  color: #dccb94;
+  color: #8c732c;
 }
 .arrows.personality-arrows {
   position: absolute;
   right: 25%;
   top: 40px;
-  color: #8c732c;
+  color: #dccb94;
 }
 .wb-sub-header {
   padding-bottom: 30px;
@@ -291,12 +291,12 @@
   text-align: left;
 }
 .wb-design ul li {
-  background: #c0c0c0;
-  color: #000;
+  background: #8c732c;
+  color: #fff;
 }
 .wb-personality ul li {
-  background: #b86a4f;
-  color: #fff;
+  background: #dccb94;
+  color: #000;
 }
 .bgchart-body-chart-div p.copy {
   font-size: 11px;
