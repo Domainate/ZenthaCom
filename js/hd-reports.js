@@ -1,5 +1,50 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    // Auto-refresh report sections
+    function initAutoRefresh() {
+        const container = document.getElementById('hd-reports-container');
+        if (!container || !localizeHDReports.refreshReportsNonce) {
+            return;
+        }
+
+        const refreshInterval = localizeHDReports.refreshInterval || 60000; // Default 1 minute
+
+        function refreshReports() {
+            const formData = new FormData();
+            formData.append('action', 'hd_refresh_reports');
+            formData.append('security', localizeHDReports.refreshReportsNonce);
+
+            fetch(localizeHDReports.ajaxUrl, {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const pendingEl = document.getElementById('hd-pending-reports');
+                        const completedEl = document.getElementById('hd-completed-reports');
+                        const otherEl = document.getElementById('hd-other-reports');
+
+                        if (pendingEl) pendingEl.innerHTML = data.pending;
+                        if (completedEl) completedEl.innerHTML = data.completed;
+                        if (otherEl) otherEl.innerHTML = data.other;
+
+                        console.log('Reports refreshed:', data.counts);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error refreshing reports:', error);
+                });
+        }
+
+        // Start polling
+        setInterval(refreshReports, refreshInterval);
+        console.log('Auto-refresh enabled: every ' + (refreshInterval / 1000) + ' seconds');
+    }
+
+    // Initialize auto-refresh
+    initAutoRefresh();
+
     function deleteReport(e) {
         const button = e.target.closest('.btn-report-delete');
         if (!button) {
