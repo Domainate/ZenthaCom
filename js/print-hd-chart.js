@@ -374,9 +374,9 @@ document.addEventListener('DOMContentLoaded', function () {
             },
         ];
 
-        // Get defined and open centers from Properties
-        const definedCenters = data?.Properties?.DefinedCenters?.list?.map(c => c.id) || [];
-        const openCenters = data?.Properties?.OpenCenters?.list?.map(c => c.id) || [];
+        // Get defined and open centers - data.DefinedCenters is already an array of strings like 'root center'
+        const definedCenters = data?.DefinedCenters || [];
+        const openCenters = data?.OpenCenters || [];
 
         definedCenters.forEach(center => {
             let centerData = centers.find(c => c.id === center.toLowerCase());
