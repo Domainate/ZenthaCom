@@ -284,27 +284,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         if (data.Variables['Digestion'] == 'right') {
-            document.querySelector('#variable-digestion')
-                .classList.remove('wb-left')
-                .classList.add('wb-right');
+            const el = document.querySelector('#variable-digestion');
+            if (el) {
+                el.classList.remove('wb-left');
+                el.classList.add('wb-right');
+            }
         }
 
         if (data.Variables['Environment'] == 'right') {
-            document.querySelector('#variable-environment')
-                .classList.remove('wb-left')
-                .classList.add('wb-right');
+            const el = document.querySelector('#variable-environment');
+            if (el) {
+                el.classList.remove('wb-left');
+                el.classList.add('wb-right');
+            }
         }
 
         if (data.Variables['Awareness'] == 'right') {
-            document.querySelector('#variable-awareness')
-                .classList.remove('wb-left')
-                .classList.add('wb-right');
+            const el = document.querySelector('#variable-awareness');
+            if (el) {
+                el.classList.remove('wb-left');
+                el.classList.add('wb-right');
+            }
         }
 
         if (data.Variables['Perspective'] == 'right') {
-            document.querySelector('#variable-perspective')
-                .classList.remove('wb-left')
-                .classList.add('wb-right');
+            const el = document.querySelector('#variable-perspective');
+            if (el) {
+                el.classList.remove('wb-left');
+                el.classList.add('wb-right');
+            }
         }
 
         // Check for Defined Centers and apply styles if needed
