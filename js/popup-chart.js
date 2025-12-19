@@ -35,10 +35,15 @@ function processChartData(data) {
     const exalted = `<div class="hdapi-fixing-state"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 10 10"><path d="M9.698 8.57L5.899.601A1 1 0 0 0 4.095.598L.261 8.566A1 1 0 0 0 1.162 10h7.633a1 1 0 0 0 .903-1.43z" fill="white" fill-rule="evenodd"></path></svg></div>`;
     const detriment = `<div class="hdapi-fixing-state"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 10 10"><path d="M9.655 1.427L5.904 9.369a1 1 0 0 1-1.808.001L.338 1.428A1 1 0 0 1 1.242 0h7.508a1 1 0 0 1 .904 1.427z" fill="white" fill-rule="evenodd"></path></svg></div>`
 
+    // Debug: log all Design keys to check for missing icon mappings
+    console.log('Design keys:', Object.keys(data.Design));
+    console.log('Personality keys:', Object.keys(data.Personality));
+
     for (const [key, value] of Object.entries(data.Design)) {
+        const iconClass = key.replace(/\s+/g, '-'); // Replace all spaces with hyphens
         jQuery('.design').append(`
 			<li style="display: inline-flex;flex-wrap: nowrap; gap: 0.25rem; align-items: center;width:100%;justify-content: flex-end;min-width: fit-content;">
-				<span class="wb-${key.replace(' ', '-')}"></span>
+				<span class="wb-${iconClass}"></span>
                 ${value.FixingState !== 'None' ? (value.FixingState === 'Detriment' ? detriment : exalted) : ''}
 				${value.Gate}.${value.Line}
 			</li>
@@ -46,9 +51,10 @@ function processChartData(data) {
     }
 
     for (const [key, value] of Object.entries(data.Personality)) {
+        const iconClass = key.replace(/\s+/g, '-'); // Replace all spaces with hyphens
         jQuery('.personality').append(`
 			<li style="display: inline-flex;flex-wrap: nowrap; gap: 0.25rem; align-items: center;width:100%;justify-content: flex-end;min-width: fit-content;">
-				<span class="wb-${key.replace(' ', '-')}"></span>
+				<span class="wb-${iconClass}"></span>
                 ${value.FixingState !== 'None' ? (value.FixingState === 'Detriment' ? detriment : exalted) : ''}
 				${value.Gate}.${value.Line}
 			</li>
@@ -192,9 +198,34 @@ function processChartData(data) {
         }
     ];
 
+    // Helper function to calculate age from birth date string
+    function calculateAge(birthDateStr) {
+        if (!birthDateStr) return null;
+        // Parse format like "19th April 1982 @ 23:02" or "19 April 1982 @ 23:02"
+        const cleaned = birthDateStr.replace(/(\d+)(st|nd|rd|th)/, '$1').replace('@', '');
+        const birthDate = new Date(cleaned);
+        if (isNaN(birthDate.getTime())) return null;
+
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
+
     chartProperties.forEach(function (property) {
         var propertyValue = data.Properties[property.key];
-        var displayValue = property.hasId && propertyValue && propertyValue.id ? propertyValue.id : propertyValue || 'No Value Available';
+        var displayValue;
+
+        // Calculate age dynamically from birth date
+        if (property.key === 'Age') {
+            const calculatedAge = calculateAge(data.Properties['BirthDateLocal']);
+            displayValue = calculatedAge !== null ? calculatedAge : (propertyValue || 'No Value Available');
+        } else {
+            displayValue = property.hasId && propertyValue && propertyValue.id ? propertyValue.id : propertyValue || 'No Value Available';
+        }
 
         if (!jQuery('#chart-properties ul').find(`li strong[data-key="${property.key}"]`).length) {
             jQuery('#chart-properties ul').append(
