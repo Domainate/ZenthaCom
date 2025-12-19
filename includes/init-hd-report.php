@@ -1,4 +1,8 @@
 <?php
+// Ensure HDReportAgent class is loaded for cron execution
+// Use __DIR__ for reliable path resolution during wp-cron
+require_once dirname(__DIR__) . '/classes/class-hd-report-agent.php';
+
 add_action('init', function () {
     if (!wp_next_scheduled('hd_check_stuck_pending_reports')) {
         wp_schedule_event(time(), 'five_minutes', 'hd_check_stuck_pending_reports');
