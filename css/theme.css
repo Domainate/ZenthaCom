@@ -129,6 +129,14 @@
 .wb-Venus:before {
   content: '\e90c';
 }
+.wb-Chiron:before {
+  content: '\26B7';
+  font-family: 'Segoe UI Symbol', 'Apple Symbols', sans-serif;
+}
+.wb-Lilith:before {
+  content: '\26B8';
+  font-family: 'Segoe UI Symbol', 'Apple Symbols', sans-serif;
+}
 
 .wb-bodychart-header {
   margin: auto;
