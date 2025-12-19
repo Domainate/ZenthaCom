@@ -81,18 +81,18 @@ function processChartData(data) {
         var personalityGate = personalityValues.some(item => Number(item.Gate) === gateNumber && gates.includes(gateNumber));
         // console.log('gate---' + gateNumber, designGate, personalityGate);
         if (designGate && personalityGate) {
-            jQuery(`#design-${gateNumber}`).css('fill', '#dccb94');
-            jQuery(`#personality-${gateNumber}`).css('fill', '#8c732c');
+            jQuery(`#design-${gateNumber}`).css('fill', '#8c732c');
+            jQuery(`#personality-${gateNumber}`).css('fill', '#dccb94');
             fixLine(el);
         } else if (designGate) {
             // el.css('fill', '#4e4e4e');
-            jQuery(`#design-${gateNumber}`).css('fill', '#dccb94');
-            jQuery(`#personality-${gateNumber}`).css('fill', '#dccb94');
+            jQuery(`#design-${gateNumber}`).css('fill', '#8c732c');
+            jQuery(`#personality-${gateNumber}`).css('fill', '#8c732c');
             fixLine(el);
         } else if (personalityGate) {
             // el.css('fill', '#d0b171');
-            jQuery(`#design-${gateNumber}`).css('fill', '#8c732c');
-            jQuery(`#personality-${gateNumber}`).css('fill', '#8c732c');
+            jQuery(`#design-${gateNumber}`).css('fill', '#dccb94');
+            jQuery(`#personality-${gateNumber}`).css('fill', '#dccb94');
             fixLine(el);
         }
     });
@@ -326,14 +326,22 @@ function processChartData(data) {
         { id: 'head center', selector: 'head-center', active: '#e7ba72' },
     ];
 
-    data?.DefinedCenters.forEach(center => {
+    // Get defined and open centers from Properties
+    const definedCenters = data?.Properties?.DefinedCenters?.list?.map(c => c.id) || [];
+    const openCenters = data?.Properties?.OpenCenters?.list?.map(c => c.id) || [];
+
+    definedCenters.forEach(center => {
         let centerData = centers.find(c => c.id === center.toLowerCase());
-        jQuery(`#${centerData.selector}`).attr('fill', centerData.active);
+        if (centerData) {
+            jQuery(`#${centerData.selector}`).attr('fill', centerData.active);
+        }
     });
 
-    data?.OpenCenters.forEach(center => {
+    openCenters.forEach(center => {
         let centerData = centers.find(c => c.id === center.toLowerCase());
-        jQuery(`#${centerData.selector}`).attr('fill', '#ffffff');
+        if (centerData) {
+            jQuery(`#${centerData.selector}`).attr('fill', '#ffffff');
+        }
     });
 
     jQuery('[data-tooltip]').hover(function (evt) {
