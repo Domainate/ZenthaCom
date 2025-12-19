@@ -81,18 +81,18 @@ document.addEventListener('DOMContentLoaded', function () {
             var personalityGate = personalityValues.some(item => Number(item.Gate) === gateNumber && gates.includes(gateNumber));
             // console.log('gate---' + gateNumber, designGate, personalityGate);
             if (designGate && personalityGate) {
-                document.querySelector(`#design-${gateNumber}`).style.fill = '#dccb94';
-                document.querySelector(`#personality-${gateNumber}`).style.fill = '#8c732c';
+                document.querySelector(`#design-${gateNumber}`).style.fill = '#8c732c';
+                document.querySelector(`#personality-${gateNumber}`).style.fill = '#dccb94';
                 fixLine(el);
             } else if (designGate) {
                 // el.css('fill', '#4e4e4e');
-                document.querySelector(`#design-${gateNumber}`).style.fill = '#dccb94';
-                document.querySelector(`#personality-${gateNumber}`).style.fill = '#dccb94';
+                document.querySelector(`#design-${gateNumber}`).style.fill = '#8c732c';
+                document.querySelector(`#personality-${gateNumber}`).style.fill = '#8c732c';
                 fixLine(el);
             } else if (personalityGate) {
                 // el.css('fill', '#d0b171');
-                document.querySelector(`#design-${gateNumber}`).style.fill = '#8c732c';
-                document.querySelector(`#personality-${gateNumber}`).style.fill = '#8c732c';
+                document.querySelector(`#design-${gateNumber}`).style.fill = '#dccb94';
+                document.querySelector(`#personality-${gateNumber}`).style.fill = '#dccb94';
                 fixLine(el);
             }
         });
@@ -374,14 +374,22 @@ document.addEventListener('DOMContentLoaded', function () {
             },
         ];
 
-        data?.DefinedCenters.forEach(center => {
+        // Get defined and open centers from Properties
+        const definedCenters = data?.Properties?.DefinedCenters?.list?.map(c => c.id) || [];
+        const openCenters = data?.Properties?.OpenCenters?.list?.map(c => c.id) || [];
+
+        definedCenters.forEach(center => {
             let centerData = centers.find(c => c.id === center.toLowerCase());
-            document.querySelector(`#${centerData.selector}`).setAttribute('fill', centerData.active);
+            if (centerData) {
+                document.querySelector(`#${centerData.selector}`)?.setAttribute('fill', centerData.active);
+            }
         });
 
-        data?.OpenCenters.forEach(center => {
+        openCenters.forEach(center => {
             let centerData = centers.find(c => c.id === center.toLowerCase());
-            document.querySelector(`#${centerData.selector}`).setAttribute('fill', '#ffffff');
+            if (centerData) {
+                document.querySelector(`#${centerData.selector}`)?.setAttribute('fill', '#ffffff');
+            }
         });
 
         document.querySelectorAll('[data-tooltip]').forEach(el => {
